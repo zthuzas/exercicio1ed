@@ -23,7 +23,7 @@ float calcularSalarioLiquido(Funcionario func) {
 }
 
 void cadastrarFuncionarios(Loja *loja) {
-    printf("Quantos funcionários deseja cadastrar (máximo %d)? ", MAX_FUNCIONARIOS);
+    printf("Quantos funcionÃ¡rios deseja cadastrar (mÃ¡ximo %d)? ", MAX_FUNCIONARIOS);
     scanf("%d", &loja->totalFuncionarios);
 
     if (loja->totalFuncionarios > MAX_FUNCIONARIOS) {
@@ -31,7 +31,7 @@ void cadastrarFuncionarios(Loja *loja) {
     }
 
     for (int i = 0; i < loja->totalFuncionarios; i++) {
-        printf("\nCadastro do funcionário %d\n", i + 1);
+        printf("\nCadastro do funcionÃ¡rio %d\n", i + 1);
 
         printf("Nome: ");
         getchar();
@@ -42,10 +42,10 @@ void cadastrarFuncionarios(Loja *loja) {
         fgets(loja->funcionarios[i].cargo, TAMANHO_CARGO, stdin);
         loja->funcionarios[i].cargo[strcspn(loja->funcionarios[i].cargo, "\n")] = '\0';
 
-        printf("Salário Base: ");
+        printf("SalÃ¡rio Base: ");
         scanf("%f", &loja->funcionarios[i].salarioBase);
 
-        printf("Benefícios: ");
+        printf("BenefÃ­cios: ");
         scanf("%f", &loja->funcionarios[i].beneficios);
 
         printf("Descontos: ");
@@ -54,18 +54,18 @@ void cadastrarFuncionarios(Loja *loja) {
 }
 
 void mostrarDadosFuncionarios(const Loja *loja) {
-    printf("\nDados dos funcionários:\n");
+    printf("\nDados dos funcionÃ¡rios:\n");
     for (int i = 0; i < loja->totalFuncionarios; i++) {
         Funcionario f = loja->funcionarios[i];
         float salarioLiquido = calcularSalarioLiquido(f);
 
-        printf("\nFuncionário %d\n", i + 1);
+        printf("\nFuncionÃ¡rio %d\n", i + 1);
         printf("Nome: %s\n", f.nome);
         printf("Cargo: %s\n", f.cargo);
-        printf("Salário Base: %.2f\n", f.salarioBase);
-        printf("Benefícios: %.2f\n", f.beneficios);
+        printf("SalÃ¡rio Base: %.2f\n", f.salarioBase);
+        printf("BenefÃ­cios: %.2f\n", f.beneficios);
         printf("Descontos: %.2f\n", f.descontos);
-        printf("Salário Líquido: %.2f\n", salarioLiquido);
+        printf("SalÃ¡rio LÃ­quido: %.2f\n", salarioLiquido);
     }
 }
 
@@ -96,13 +96,13 @@ int main() {
     mostrarDadosFuncionarios(&loja);
 
     float mediaSalarial = calcularMediaSalarial(&loja);
-    printf("\nMédia Salarial: %.2f\n", mediaSalarial);
+    printf("\nMÃ©dia Salarial: %.2f\n", mediaSalarial);
 
     Funcionario maiorSalario = encontrarMaiorSalario(&loja);
-    printf("\nFuncionário com o maior salário líquido:\n");
+    printf("\nFuncionÃ¡rio com o maior salÃ¡rio lÃ­quido:\n");
     printf("Nome: %s\n", maiorSalario.nome);
     printf("Cargo: %s\n", maiorSalario.cargo);
-    printf("Salário Líquido: %.2f\n", calcularSalarioLiquido(maiorSalario));
+    printf("SalÃ¡rio LÃ­quido: %.2f\n", calcularSalarioLiquido(maiorSalario));
 
     return 0;
 }
